@@ -5,6 +5,15 @@ def usage():
     print("""
         replacement-clock.py npages nrefs nframes
 
+        This program generates a random sequence of page numbers and uses them
+        to simulate the Clock page replacement algorithm.
+
+        npages = the number of pages in the virtual address space
+        nrefs  = the total number of page references in the address string
+        nframes = the number of frames in memory
+    """)
+
+def clock_replacement(seq, frames):
     """implements the clock replacement algorithm, passed the generated reference string as argument"""
     print(seq)
 
@@ -78,3 +87,9 @@ class clock_item():
         return str("Page #" + str(self.page) + " which has a used status of " + str(self.status))
 
 if __name__ == "__main__":
+    if len(sys.argv) != 4: # [replacement-clock.py, arg1, arg2, arg3]
+        usage()
+        sys.exit(1)
+    else:
+        sequence = pagerefgen.generate(int(sys.argv[1]), int(sys.argv[2])) # argv[1] -> number of pages, argv[2] -> length of page reference string
+        clock_replacement(sequence, int(sys.argv[3])) # argv[3] -> number of frames
