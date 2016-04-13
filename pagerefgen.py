@@ -6,7 +6,6 @@ import sys
 pages = 5
 length = 10
 
-
 def usage():
     print("""
         pagerefgen.py [--pages = npages] [--length = nrefs]

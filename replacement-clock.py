@@ -1,7 +1,10 @@
 import sys
 import pagerefgen
 
-def clock_replacement(seq):
+def usage():
+    print("""
+        replacement-clock.py npages nrefs nframes
+
     """implements the clock replacement algorithm, passed the generated reference string as argument"""
     print(seq)
 
@@ -75,7 +78,3 @@ class clock_item():
         return str("Page #" + str(self.page) + " which has a used status of " + str(self.status))
 
 if __name__ == "__main__":
-    global frames
-    frames = int(sys.argv[3]) # the number of frames present in memory
-    sequence = pagerefgen.generate(int(sys.argv[1]), int(sys.argv[2])) # argv[1] -> number of pages, argv[2] -> length of page reference string
-    clock_replacement(sequence)
